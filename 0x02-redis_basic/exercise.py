@@ -25,11 +25,8 @@ class Cache:
         """Get the value of the given key
         Returns ('Nil') if None
         """
-        if self._redis.exists(key) is True:
-            data = self._redis.get(key)
-            return data if fn is None else fn(data)
-        else:
-            return ('(nil)')
+        data = self._redis.get(key)
+        return data if fn is None else fn(data)
 
     def get_str(self, key: str) -> str:
         """Converts data to string"""
