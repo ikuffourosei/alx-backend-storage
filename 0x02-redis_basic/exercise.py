@@ -30,12 +30,11 @@ class Cache:
             return data if fn is None else fn(data)
         else:
             return ('(nil)')
-    
+
     def get_str(self, key: str) -> str:
         """Converts data to string"""
         return self._redis.get(key, lambda val: val.decode('utf-8'))
-    
+
     def get_int(self, key: str) -> int:
         """Returns redis information converted to int"""
         return self._redis.get(key, lambda val: int(val))
-    
